@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Darsh Sadarangani",
-  description: "Personal website of Darsh Sadarangani",
+  title: "Aceiro",
+  description: "Aceiro — AI systems, automation and digital products.",
 };
 
 export default function RootLayout({
