@@ -24,11 +24,11 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 flex max-w-3xl flex-col items-center gap-8">
           <h1 className="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
-            I Build AI Systems That Work While You Sleep.
+            We Build AI Systems That Work While You Sleep.
           </h1>
 
           <p className="max-w-xl text-lg leading-relaxed text-neutral-400">
-            I help businesses automate, scale and grow using AI. From
+            We help businesses automate, scale and grow using AI. From
             custom-built apps and websites to full AI systems.
           </p>
 
