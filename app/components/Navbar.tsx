@@ -7,7 +7,7 @@ export default function Navbar() {
       style={{ backgroundColor: "#0a0a0a" }}
     >
       <span className="text-white text-base font-medium tracking-tight">
-        Darsh Sadarangani
+        Aceiro
       </span>
 
       <ul className="flex items-center gap-8">
