@@ -1,5 +1,6 @@
 import About from "./components/About";
 import Services from "./components/Services";
+import Process from "./components/Process";
 import Contact from "./components/Contact";
 import HeroGrid from "./components/HeroGrid";
 
@@ -10,57 +11,52 @@ export default function Home() {
     <>
       <main
         className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
-        style={{ backgroundColor: "#0a0a0a" }}
+        style={{ background: "radial-gradient(ellipse at 50% 60%, #0d1a2d 0%, #0a0a0a 70%)" }}
       >
-        {/* Animated dot grid */}
         <HeroGrid />
 
-        {/* Blue glow orb */}
-        <div
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            width: "600px",
-            height: "600px",
-            background:
-              "radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(59,130,246,0.06) 45%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
+        <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 px-2">
+          {/* Label */}
+          <p className="text-xs font-semibold tracking-[0.2em] text-neutral-400 uppercase">
+            Aceiro — AI Systems &amp; Products
+          </p>
 
-        {/* Content */}
-        <div className="relative z-10 flex max-w-4xl flex-col items-center gap-8 px-2">
-          <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+          {/* Headline */}
+          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
             {headline.map((word, i) => (
               <span
                 key={i}
-                className="inline-block mr-[0.25em] animate-fadeInWord"
-                style={{ animationDelay: `${i * 0.08}s`, opacity: 0 }}
+                className="inline-block mr-[0.22em] animate-fadeInWord"
+                style={{ animationDelay: `${i * 0.07}s`, opacity: 0 }}
               >
                 {word}
               </span>
             ))}
           </h1>
 
+          {/* Subheading */}
           <p
             className="max-w-lg text-base leading-relaxed text-neutral-400 sm:text-lg animate-fadeInWord"
-            style={{ animationDelay: `${headline.length * 0.08 + 0.1}s`, opacity: 0 }}
+            style={{ animationDelay: `${headline.length * 0.07 + 0.1}s`, opacity: 0 }}
           >
             We help businesses automate, scale and grow using AI. From
             custom-built apps and websites to full AI systems.
           </p>
 
+          {/* CTA button — outlined */}
           <a
             href="#contact"
-            className="mt-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-black transition-opacity duration-200 hover:opacity-80 animate-fadeInWord"
-            style={{ animationDelay: `${headline.length * 0.08 + 0.3}s`, opacity: 0 }}
+            className="animate-fadeInWord mt-2 inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
+            style={{ animationDelay: `${headline.length * 0.07 + 0.3}s`, opacity: 0 }}
           >
-            Get In Touch
+            Get In Touch <span>→</span>
           </a>
         </div>
       </main>
 
       <About />
       <Services />
+      <Process />
       <Contact />
     </>
   );
