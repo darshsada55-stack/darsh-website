@@ -1,4 +1,5 @@
 import About from "./components/About";
+import Founder from "./components/Founder";
 import Services from "./components/Services";
 import Process from "./components/Process";
 import Contact from "./components/Contact";
@@ -55,6 +56,7 @@ export default function Home() {
       </main>
 
       <About />
+      <Founder />
       <Services />
       <Process />
       <Contact />
