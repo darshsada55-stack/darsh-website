@@ -43,7 +43,7 @@ export default function Contact() {
         style={{ borderTop: "1px solid rgba(255,255,255,0.08)", backgroundColor: "#0a0a0a" }}
       >
         <div className="mx-auto max-w-5xl flex items-center justify-between">
-          <span className="text-sm text-neutral-400">Aceiro</span>
+          <span className="text-sm text-neutral-400">PÉYRO</span>
           <span className="text-sm text-neutral-600">© 2025</span>
         </div>
       </footer>

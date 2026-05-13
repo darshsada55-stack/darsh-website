@@ -24,7 +24,7 @@ export default function Founder() {
             Darsh Sadarangani
           </p>
           <p className="text-base text-neutral-500">
-            Founder &amp; CEO, Aceiro
+            Founder &amp; CEO, PÉYRO
           </p>
         </div>
       </div>

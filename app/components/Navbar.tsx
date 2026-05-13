@@ -7,7 +7,7 @@ export default function Navbar() {
       style={{ backgroundColor: "#0a0a0a" }}
     >
       <span className="text-xl font-bold tracking-tight text-white md:text-2xl">
-        Aceiro
+        PÉYRO
       </span>
 
       <ul className="flex items-center gap-6 md:gap-8">

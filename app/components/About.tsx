@@ -21,7 +21,7 @@ export default function About() {
             01 — About
           </p>
           <h2 className="text-4xl font-bold tracking-tight text-white md:text-6xl">
-            About Aceiro.
+            About PÉYRO.
           </h2>
         </div>
 
