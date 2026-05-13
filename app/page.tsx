@@ -19,7 +19,7 @@ export default function Home() {
         <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 px-2">
           {/* Label */}
           <p className="text-xs font-semibold tracking-[0.2em] text-neutral-400 uppercase">
-            Aceiro — AI Systems &amp; Products
+            PÉYRO — AI Systems &amp; Products
           </p>
 
           {/* Headline */}

@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aceiro",
-  description: "Aceiro — AI systems, automation and digital products.",
+  title: "PÉYRO",
+  description: "PÉYRO — AI systems, automation and digital products.",
 };
 
 export default function RootLayout({
