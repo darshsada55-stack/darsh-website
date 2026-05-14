@@ -28,7 +28,7 @@ export default function Contact() {
           </div>
 
           <a
-            href="https://mail.google.com/mail/?view=cm&to=darshsada@gmail.com"
+            href="mailto:darsh@peyro.co"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-black transition-opacity duration-200 hover:opacity-80"
