@@ -44,7 +44,7 @@ export default function Contact() {
       >
         <div className="mx-auto max-w-5xl flex items-center justify-between">
           <span className="text-sm text-neutral-400">PÉYRO</span>
-          <span className="text-sm text-neutral-600">© 2025</span>
+          <span className="text-sm text-neutral-600">© 2026</span>
         </div>
       </footer>
     </>
