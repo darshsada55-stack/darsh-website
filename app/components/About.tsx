@@ -8,25 +8,25 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-full px-6 py-28 md:px-16 md:py-40"
-      style={{ backgroundColor: "#0a0a0a" }}
+      className="w-full px-6 py-20 md:px-16 md:py-28"
+      style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)" }}
     >
       <div
         ref={ref}
         className="mx-auto max-w-6xl flex flex-col gap-12 md:flex-row md:gap-24 transition-all duration-700"
-        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)" }}
+        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)" }}
       >
         <div className="md:w-5/12">
-          <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+          <p className="mb-5 text-[10px] font-semibold tracking-[0.25em] text-neutral-600 uppercase">
             01 — About
           </p>
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-6xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
             About PÉYRO.
           </h2>
         </div>
 
         <div className="md:w-7/12 flex items-center">
-          <p className="text-lg leading-relaxed text-neutral-300 md:text-xl md:leading-relaxed">
+          <p className="text-base leading-relaxed text-neutral-400 md:text-lg md:leading-relaxed">
             We are an AI systems and products company. We build automation,
             digital products and AI solutions for businesses worldwide. We help
             brands move faster, scale smarter and operate with the power of AI.
