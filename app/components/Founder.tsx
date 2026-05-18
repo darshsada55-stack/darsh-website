@@ -4,7 +4,6 @@ import { useFadeInOnScroll } from "../hooks/useFadeInOnScroll";
 
 const founders = [
   { name: "Darsh Sadarangani", role: "Founder & CEO" },
-  { name: "Avnee Singh", role: "Co-Founder", contact: "+44 7824 061192" },
 ];
 
 export default function Founder() {
