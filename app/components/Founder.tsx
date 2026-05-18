@@ -2,7 +2,7 @@
 
 import { useFadeInOnScroll } from "../hooks/useFadeInOnScroll";
 
-const founders = [
+const founders: { name: string; role: string; contact?: string }[] = [
   { name: "Darsh Sadarangani", role: "Founder & CEO" },
 ];
 
