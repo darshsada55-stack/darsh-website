@@ -23,7 +23,7 @@ export default function Founder() {
           The Team
         </p>
         <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-5xl">
-          The Founders.
+          The Founder.
         </h2>
 
         <div className="grid grid-cols-1 gap-px md:grid-cols-2" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
