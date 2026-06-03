@@ -33,3 +33,12 @@ body {
 .animate-fadeInWord {
   animation: fadeInWord 0.5s ease forwards;
 }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+.animate-ticker {
+  animation: ticker 25s linear infinite;
+}

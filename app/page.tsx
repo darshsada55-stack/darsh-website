@@ -4,6 +4,7 @@ import Services from "./components/Services";
 import Process from "./components/Process";
 import Contact from "./components/Contact";
 import HeroGrid from "./components/HeroGrid";
+import Ticker from "./components/Ticker";
 
 const headline = "We Build AI Systems That Work While You Sleep.".split(" ");
 
@@ -23,7 +24,7 @@ export default function Home() {
           </p>
 
           {/* Headline */}
-          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl" style={{ fontFamily: "var(--font-playfair)" }}>
             {headline.map((word, i) => (
               <span
                 key={i}
@@ -55,6 +56,7 @@ export default function Home() {
         </div>
       </main>
 
+      <Ticker />
       <About />
       <Founder />
       <Services />

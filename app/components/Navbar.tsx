@@ -1,27 +1,76 @@
 "use client";
 
-export default function Navbar() {
-  return (
-    <nav
-      className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-10 md:py-5"
-      style={{ backgroundColor: "#0a0a0a" }}
-    >
-      <span className="text-xl font-bold tracking-tight text-white md:text-2xl">
-        PÉYRO
-      </span>
+import { useState } from "react";
 
-      <ul className="flex items-center gap-6 md:gap-8">
-        {["Work", "Services", "Contact"].map((label) => (
-          <li key={label}>
+const links = ["Work", "Services", "Contact"];
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <nav
+        className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-10 md:py-5"
+        style={{ backgroundColor: "#0a0a0a", borderBottom: open ? "1px solid rgba(255,255,255,0.06)" : "none" }}
+      >
+        <span className="text-xl font-bold tracking-tight text-white md:text-2xl">
+          PÉYRO
+        </span>
+
+        {/* Desktop links */}
+        <ul className="hidden md:flex items-center gap-8">
+          {links.map((label) => (
+            <li key={label}>
+              <a
+                href={`#${label.toLowerCase()}`}
+                className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          className="flex md:hidden flex-col gap-1.5 p-1"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          <span
+            className="block h-px w-6 bg-white transition-all duration-300"
+            style={{ transform: open ? "rotate(45deg) translateY(4px)" : "none" }}
+          />
+          <span
+            className="block h-px w-6 bg-white transition-all duration-300"
+            style={{ opacity: open ? 0 : 1 }}
+          />
+          <span
+            className="block h-px w-6 bg-white transition-all duration-300"
+            style={{ transform: open ? "rotate(-45deg) translateY(-4px)" : "none" }}
+          />
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {open && (
+        <div
+          className="fixed inset-0 top-[57px] z-40 flex flex-col gap-0 md:hidden"
+          style={{ backgroundColor: "#0a0a0a" }}
+        >
+          {links.map((label) => (
             <a
+              key={label}
               href={`#${label.toLowerCase()}`}
-              className="text-xs text-neutral-400 hover:text-white transition-colors duration-200 md:text-sm"
+              onClick={() => setOpen(false)}
+              className="px-6 py-5 text-lg font-medium text-white border-b transition-colors hover:text-neutral-400"
+              style={{ borderColor: "rgba(255,255,255,0.06)" }}
             >
               {label}
             </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+          ))}
+        </div>
+      )}
+    </>
   );
 }
