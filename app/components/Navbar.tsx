@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import PeyroLogo from "./PeyroLogo";
 
 const links = ["Work", "Services", "Contact"];
 
@@ -14,7 +13,9 @@ export default function Navbar() {
         className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-10 md:py-5"
         style={{ backgroundColor: "#0a0a0a", borderBottom: open ? "1px solid rgba(255,255,255,0.06)" : "none" }}
       >
-        <PeyroLogo theme="dark" showTagline={false} fontSize={22} />
+        <span className="text-xl font-bold tracking-tight text-white md:text-2xl">
+          PÉYRO
+        </span>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
