@@ -26,7 +26,7 @@ export default function Founder() {
           The Founder.
         </h2>
 
-        <div className="grid grid-cols-1 gap-px md:grid-cols-2" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="grid grid-cols-1" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
           {founders.map((f) => (
             <div
               key={f.name}
