@@ -28,7 +28,6 @@ export default function Process() {
 
   return (
     <section
-      id="work"
       className="w-full px-6 py-24 md:px-16 md:py-32"
       style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.07)" }}
     >
@@ -38,7 +37,7 @@ export default function Process() {
         style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)" }}
       >
         <p className="mb-6 text-[10px] font-semibold tracking-[0.3em] text-neutral-600 uppercase">
-          03 — Process
+          04 — Process
         </p>
         <h2 className="mb-16 text-3xl font-bold tracking-tight text-white md:text-5xl">
           How We Work.

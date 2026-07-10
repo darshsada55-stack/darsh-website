@@ -1,6 +1,7 @@
 "use client";
 
 import { useFadeInOnScroll } from "../hooks/useFadeInOnScroll";
+import TiltCard from "./TiltCard";
 
 const services = [
   {
@@ -41,7 +42,7 @@ export default function Services() {
         style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)" }}
       >
         <p className="mb-6 text-[10px] font-semibold tracking-[0.3em] text-neutral-600 uppercase">
-          02 — Services
+          03 — Services
         </p>
         <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-5xl">
           What We Build.
@@ -49,7 +50,8 @@ export default function Services() {
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {services.map((s) => (
-            <div key={s.title} className="card-premium group flex flex-col gap-5 rounded-2xl p-8 md:p-10">
+            <TiltCard key={s.title} className="rounded-2xl">
+              <div className="group flex h-full flex-col gap-5 p-8 md:p-10">
               <span
                 className="text-gradient text-4xl font-bold md:text-5xl"
                 style={{ fontFamily: "var(--font-playfair)" }}
@@ -69,8 +71,9 @@ export default function Services() {
                     {t}
                   </span>
                 ))}
+                </div>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

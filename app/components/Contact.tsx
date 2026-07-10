@@ -48,7 +48,7 @@ export default function Contact() {
           {/* Left — heading & details */}
           <div>
             <p className="mb-6 text-[10px] font-semibold tracking-[0.3em] text-neutral-600 uppercase">
-              04 — Contact
+              05 — Contact
             </p>
             <h2
               className="mb-6 text-4xl font-bold tracking-tight text-white md:text-6xl"

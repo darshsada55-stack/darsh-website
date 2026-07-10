@@ -125,6 +125,45 @@ body::after {
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
+/* ——— Custom cursor ——— */
+@media (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor a,
+  .has-custom-cursor button,
+  .has-custom-cursor input,
+  .has-custom-cursor textarea {
+    cursor: none;
+  }
+}
+
+/* ——— Marquee CTA ——— */
+.marquee-word {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+  color: transparent;
+  transition: color 0.4s ease, -webkit-text-stroke-color 0.4s ease;
+}
+.marquee-cta:hover .marquee-word {
+  color: #ffffff;
+  -webkit-text-stroke-color: transparent;
+}
+
+/* ——— Mockup animations ——— */
+@keyframes barGrow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+.animate-barGrow {
+  animation: barGrow 1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes flowDot {
+  from { left: -10%; }
+  to   { left: 105%; }
+}
+.animate-flowDot {
+  animation: flowDot 1.8s linear infinite;
+}
+
 /* ——— Button shine ——— */
 .btn-primary {
   position: relative;
