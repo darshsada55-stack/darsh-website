@@ -3,8 +3,12 @@ import Founder from "./components/Founder";
 import Services from "./components/Services";
 import Process from "./components/Process";
 import Contact from "./components/Contact";
-import HeroGrid from "./components/HeroGrid";
+import NeuralHero from "./components/NeuralHero";
 import Ticker from "./components/Ticker";
+import Work from "./components/Work";
+import Stats from "./components/Stats";
+import MarqueeCTA from "./components/MarqueeCTA";
+import Magnetic from "./components/Magnetic";
 
 const line1 = "We Build AI Systems".split(" ");
 const line2 = "That Work While You Sleep.".split(" ");
@@ -14,21 +18,21 @@ export default function Home() {
   return (
     <>
       <main
-        className="relative flex min-h-[calc(100vh-65px)] flex-col items-center justify-center overflow-hidden px-6 text-center"
-        style={{ background: "radial-gradient(ellipse at 50% 60%, #0d1a2d 0%, #0a0a0a 70%)" }}
+        className="relative flex min-h-[calc(100vh-65px)] flex-col justify-center overflow-hidden px-6 md:px-16"
+        style={{ background: "radial-gradient(ellipse at 30% 50%, #0d1a2d 0%, #0a0a0a 65%)" }}
       >
-        <HeroGrid />
+        <NeuralHero />
 
         {/* Soft glow orb */}
         <div
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          className="pointer-events-none absolute left-[20%] top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{
-            background: "radial-gradient(ellipse, rgba(59,130,246,0.14) 0%, transparent 65%)",
+            background: "radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, transparent 65%)",
             filter: "blur(40px)",
           }}
         />
 
-        <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 px-2 pb-16 pt-10">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-start gap-8 pb-20 pt-10">
           {/* Availability badge */}
           <div
             className="animate-fadeInWord flex items-center gap-2.5 rounded-full px-4 py-1.5"
@@ -46,7 +50,7 @@ export default function Home() {
 
           {/* Headline */}
           <h1
-            className="text-5xl font-bold leading-[1.08] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+            className="text-left text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-8xl lg:text-[6.5rem]"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             <span className="block">
@@ -78,7 +82,7 @@ export default function Home() {
 
           {/* Subheading */}
           <p
-            className="max-w-xl text-base leading-relaxed text-neutral-400 sm:text-lg animate-fadeInWord"
+            className="max-w-xl text-left text-base leading-relaxed text-neutral-400 sm:text-lg animate-fadeInWord"
             style={{ animationDelay: `${0.15 + totalWords * 0.08 + 0.1}s`, opacity: 0 }}
           >
             We help businesses automate, scale and grow using AI. From
@@ -87,22 +91,36 @@ export default function Home() {
 
           {/* CTAs */}
           <div
-            className="animate-fadeInWord mt-2 flex flex-col items-center gap-4 sm:flex-row"
+            className="animate-fadeInWord mt-2 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
             style={{ animationDelay: `${0.15 + totalWords * 0.08 + 0.25}s`, opacity: 0 }}
           >
-            <a
-              href="#contact"
-              className="btn-primary inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-transform duration-300 hover:scale-[1.04]"
-            >
-              Get In Touch <span>→</span>
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-            >
-              Explore Services
-            </a>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="btn-primary inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black"
+              >
+                Get In Touch <span>→</span>
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-8 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:border-white/40 hover:bg-white/5"
+              >
+                See The Work
+              </a>
+            </Magnetic>
           </div>
+        </div>
+
+        {/* Side label */}
+        <div className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 lg:block">
+          <span
+            className="block text-[10px] tracking-[0.4em] text-neutral-700 uppercase"
+            style={{ writingMode: "vertical-rl" }}
+          >
+            PÉYRO — AI Systems &amp; Products © 2026
+          </span>
         </div>
 
         {/* Scroll hint */}
@@ -118,9 +136,12 @@ export default function Home() {
 
       <Ticker />
       <About />
-      <Founder />
+      <Stats />
+      <Work />
       <Services />
       <Process />
+      <Founder />
+      <MarqueeCTA />
       <Contact />
     </>
   );
