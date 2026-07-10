@@ -1,35 +1,56 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = ["Work", "Services", "Contact"];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
       <nav
-        className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-10 md:py-5"
-        style={{ backgroundColor: "#0a0a0a", borderBottom: open ? "1px solid rgba(255,255,255,0.06)" : "none" }}
+        className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-all duration-300"
+        style={{
+          backgroundColor: scrolled || open ? "rgba(10,10,10,0.72)" : "rgba(10,10,10,0)",
+          backdropFilter: scrolled || open ? "blur(16px)" : "none",
+          WebkitBackdropFilter: scrolled || open ? "blur(16px)" : "none",
+          borderBottom: scrolled || open ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
+        }}
       >
-        <span className="text-xl font-bold tracking-tight text-white md:text-2xl">
+        <a href="#" className="text-lg font-bold tracking-[0.25em] text-white md:text-xl">
           PÉYRO
-        </span>
+        </a>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map((label) => (
-            <li key={label}>
-              <a
-                href={`#${label.toLowerCase()}`}
-                className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center gap-10">
+          <ul className="flex items-center gap-8">
+            {links.map((label) => (
+              <li key={label}>
+                <a
+                  href={`#${label.toLowerCase()}`}
+                  className="nav-link text-[13px] tracking-wide text-neutral-400 hover:text-white transition-colors duration-200"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#contact"
+            className="btn-primary rounded-full bg-white px-5 py-2 text-[13px] font-semibold text-black transition-transform duration-300 hover:scale-[1.04]"
+          >
+            Get in Touch
+          </a>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -55,20 +76,28 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="fixed inset-0 top-[57px] z-40 flex flex-col gap-0 md:hidden"
-          style={{ backgroundColor: "#0a0a0a" }}
+          className="fixed inset-0 top-[57px] z-40 flex flex-col md:hidden"
+          style={{ backgroundColor: "rgba(10,10,10,0.97)", backdropFilter: "blur(16px)" }}
         >
-          {links.map((label) => (
+          {links.map((label, i) => (
             <a
               key={label}
               href={`#${label.toLowerCase()}`}
               onClick={() => setOpen(false)}
-              className="px-6 py-5 text-lg font-medium text-white border-b transition-colors hover:text-neutral-400"
-              style={{ borderColor: "rgba(255,255,255,0.06)" }}
+              className="animate-fadeInWord px-6 py-6 text-2xl font-semibold text-white border-b transition-colors hover:text-neutral-400"
+              style={{ borderColor: "rgba(255,255,255,0.07)", animationDelay: `${i * 0.06}s`, opacity: 0 }}
             >
               {label}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="animate-fadeInWord mx-6 mt-8 rounded-full bg-white px-6 py-3.5 text-center text-sm font-semibold text-black"
+            style={{ animationDelay: "0.2s", opacity: 0 }}
+          >
+            Get in Touch →
+          </a>
         </div>
       )}
     </>

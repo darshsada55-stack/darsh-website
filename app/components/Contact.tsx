@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { useFadeInOnScroll } from "../hooks/useFadeInOnScroll";
 
+const inputStyle = {
+  backgroundColor: "rgba(255,255,255,0.03)",
+  border: "1px solid rgba(255,255,255,0.1)",
+};
+
 export default function Contact() {
   const { ref, visible } = useFadeInOnScroll();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -23,96 +28,171 @@ export default function Contact() {
     <>
       <section
         id="contact"
-        className="w-full px-6 py-20 md:px-16 md:py-28"
-        style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+        className="relative w-full overflow-hidden px-6 py-24 md:px-16 md:py-36"
+        style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.07)" }}
       >
+        {/* Ambient glow */}
+        <div
+          className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background: "radial-gradient(ellipse, rgba(59,130,246,0.08) 0%, transparent 65%)",
+            filter: "blur(40px)",
+          }}
+        />
+
         <div
           ref={ref}
-          className="mx-auto max-w-6xl transition-all duration-700"
-          style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)" }}
+          className="relative mx-auto grid max-w-6xl grid-cols-1 gap-16 transition-all duration-1000 md:grid-cols-2 md:gap-20"
+          style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)" }}
         >
-          <p className="mb-5 text-[10px] font-semibold tracking-[0.25em] text-neutral-600 uppercase">
-            04 — Contact
-          </p>
-          <h2 className="mb-3 text-3xl font-bold tracking-tight text-white md:text-5xl">
-            Let's Build Something.
-          </h2>
-          <p className="mb-12 max-w-lg text-base leading-relaxed text-neutral-500">
-            Have a project in mind or want to explore what AI can do for your business? Let's talk.
-          </p>
+          {/* Left — heading & details */}
+          <div>
+            <p className="mb-6 text-[10px] font-semibold tracking-[0.3em] text-neutral-600 uppercase">
+              04 — Contact
+            </p>
+            <h2
+              className="mb-6 text-4xl font-bold tracking-tight text-white md:text-6xl"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Let&apos;s Build{" "}
+              <span className="text-gradient italic">Something.</span>
+            </h2>
+            <p className="mb-10 max-w-md text-base leading-relaxed text-neutral-500">
+              Have a project in mind or want to explore what AI can do for your
+              business? Tell us about it — we usually reply within 24 hours.
+            </p>
 
-          {sent ? (
-            <div className="py-10 text-center">
-              <p className="text-lg font-semibold text-white">Message sent.</p>
-              <p className="mt-2 text-sm text-neutral-500">We'll be in touch shortly.</p>
-              <button
-                onClick={() => setSent(false)}
-                className="mt-6 text-xs text-neutral-600 underline hover:text-white transition-colors"
-              >
-                Send another
-              </button>
+            <a
+              href="mailto:darsh@peyro.co"
+              className="nav-link inline-block text-lg font-medium text-white md:text-xl"
+            >
+              darsh@peyro.co
+            </a>
+
+            <div className="mt-10 flex items-center gap-2.5">
+              <span className="animate-pulseDot h-1.5 w-1.5 rounded-full bg-green-400" />
+              <span className="text-xs tracking-wide text-neutral-500">
+                Currently taking on new projects
+              </span>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-semibold tracking-widest text-neutral-600 uppercase">Name</label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="Your name"
-                  className="rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-700 outline-none transition-all focus:ring-1 focus:ring-white/20"
-                  style={{ backgroundColor: "#111111", border: "1px solid rgba(255,255,255,0.08)" }}
-                />
-              </div>
+          </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-semibold tracking-widest text-neutral-600 uppercase">Email</label>
-                <input
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  placeholder="your@email.com"
-                  className="rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-700 outline-none transition-all focus:ring-1 focus:ring-white/20"
-                  style={{ backgroundColor: "#111111", border: "1px solid rgba(255,255,255,0.08)" }}
-                />
+          {/* Right — form */}
+          <div>
+            {sent ? (
+              <div className="card-premium flex h-full flex-col items-center justify-center rounded-2xl p-12 text-center">
+                <p className="text-xl font-semibold text-white">Message sent.</p>
+                <p className="mt-2 text-sm text-neutral-500">We&apos;ll be in touch shortly.</p>
+                <button
+                  onClick={() => setSent(false)}
+                  className="mt-6 text-xs text-neutral-600 underline transition-colors hover:text-white"
+                >
+                  Send another
+                </button>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-[10px] font-semibold tracking-widest text-neutral-600 uppercase">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Your name"
+                      className="rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-700 outline-none transition-all focus:ring-1 focus:ring-white/25"
+                      style={inputStyle}
+                    />
+                  </div>
 
-              <div className="md:col-span-2 flex flex-col gap-2">
-                <label className="text-[10px] font-semibold tracking-widest text-neutral-600 uppercase">Message</label>
-                <textarea
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder="Tell us about your project..."
-                  className="rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-700 outline-none resize-none transition-all focus:ring-1 focus:ring-white/20"
-                  style={{ backgroundColor: "#111111", border: "1px solid rgba(255,255,255,0.08)" }}
-                />
-              </div>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-[10px] font-semibold tracking-widest text-neutral-600 uppercase">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="your@email.com"
+                      className="rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-700 outline-none transition-all focus:ring-1 focus:ring-white/25"
+                      style={inputStyle}
+                    />
+                  </div>
+                </div>
 
-              <div className="md:col-span-2">
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] font-semibold tracking-widest text-neutral-600 uppercase">
+                    Message
+                  </label>
+                  <textarea
+                    required
+                    rows={6}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Tell us about your project..."
+                    className="resize-none rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-700 outline-none transition-all focus:ring-1 focus:ring-white/25"
+                    style={inputStyle}
+                  />
+                </div>
+
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
+                  className="btn-primary mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-transform duration-300 hover:scale-[1.02]"
                 >
                   Send Message <span>→</span>
                 </button>
-              </div>
-            </form>
-          )}
+              </form>
+            )}
+          </div>
         </div>
       </section>
 
+      {/* Footer */}
       <footer
-        className="w-full px-6 py-6 md:px-16"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)", backgroundColor: "#0a0a0a" }}
+        className="w-full px-6 pb-8 pt-16 md:px-16"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.07)", backgroundColor: "#0a0a0a" }}
       >
-        <div className="mx-auto max-w-6xl flex items-center justify-between">
-          <span className="text-xs font-semibold tracking-widest text-neutral-600 uppercase">PÉYRO</span>
-          <span className="text-xs text-neutral-700">© 2026</span>
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p
+                className="text-5xl font-bold tracking-[0.2em] text-white md:text-7xl"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                PÉYRO
+              </p>
+              <p className="mt-3 text-xs tracking-wide text-neutral-600">
+                AI systems, automation &amp; digital products.
+              </p>
+            </div>
+
+            <ul className="flex gap-8">
+              {["Work", "Services", "Contact"].map((label) => (
+                <li key={label}>
+                  <a
+                    href={`#${label.toLowerCase()}`}
+                    className="text-xs tracking-wide text-neutral-500 transition-colors hover:text-white"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div
+            className="mt-12 flex items-center justify-between pt-6"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+          >
+            <span className="text-[11px] tracking-widest text-neutral-700 uppercase">
+              © 2026 PÉYRO
+            </span>
+            <span className="text-[11px] text-neutral-700">Built with AI</span>
+          </div>
         </div>
       </footer>
     </>

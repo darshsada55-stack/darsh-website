@@ -6,53 +6,113 @@ import Contact from "./components/Contact";
 import HeroGrid from "./components/HeroGrid";
 import Ticker from "./components/Ticker";
 
-const headline = "We Build AI Systems That Work While You Sleep.".split(" ");
+const line1 = "We Build AI Systems".split(" ");
+const line2 = "That Work While You Sleep.".split(" ");
+const totalWords = line1.length + line2.length;
 
 export default function Home() {
   return (
     <>
       <main
-        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
+        className="relative flex min-h-[calc(100vh-65px)] flex-col items-center justify-center overflow-hidden px-6 text-center"
         style={{ background: "radial-gradient(ellipse at 50% 60%, #0d1a2d 0%, #0a0a0a 70%)" }}
       >
         <HeroGrid />
 
-        <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 px-2">
-          {/* Label */}
-          <p className="text-xs font-semibold tracking-[0.2em] text-neutral-400 uppercase">
-            PÉYRO — AI Systems &amp; Products
-          </p>
+        {/* Soft glow orb */}
+        <div
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background: "radial-gradient(ellipse, rgba(59,130,246,0.14) 0%, transparent 65%)",
+            filter: "blur(40px)",
+          }}
+        />
+
+        <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 px-2 pb-16 pt-10">
+          {/* Availability badge */}
+          <div
+            className="animate-fadeInWord flex items-center gap-2.5 rounded-full px-4 py-1.5"
+            style={{
+              border: "1px solid rgba(255,255,255,0.1)",
+              backgroundColor: "rgba(255,255,255,0.03)",
+              opacity: 0,
+            }}
+          >
+            <span className="animate-pulseDot h-1.5 w-1.5 rounded-full bg-green-400" />
+            <span className="text-[11px] font-medium tracking-[0.15em] text-neutral-400 uppercase">
+              Available for new projects
+            </span>
+          </div>
 
           {/* Headline */}
-          <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl" style={{ fontFamily: "var(--font-playfair)" }}>
-            {headline.map((word, i) => (
-              <span
-                key={i}
-                className="inline-block mr-[0.22em] animate-fadeInWord"
-                style={{ animationDelay: `${i * 0.07}s`, opacity: 0 }}
-              >
-                {word}
-              </span>
-            ))}
+          <h1
+            className="text-5xl font-bold leading-[1.08] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
+            <span className="block">
+              {line1.map((word, i) => (
+                <span
+                  key={i}
+                  className="inline-block mr-[0.22em] animate-fadeInWord"
+                  style={{ animationDelay: `${0.15 + i * 0.08}s`, opacity: 0 }}
+                >
+                  {word}
+                </span>
+              ))}
+            </span>
+            <span className="block">
+              {line2.map((word, i) => {
+                const isAccent = word === "Sleep.";
+                return (
+                  <span
+                    key={i}
+                    className={`inline-block mr-[0.22em] animate-fadeInWord ${isAccent ? "text-gradient italic" : ""}`}
+                    style={{ animationDelay: `${0.15 + (line1.length + i) * 0.08}s`, opacity: 0 }}
+                  >
+                    {word}
+                  </span>
+                );
+              })}
+            </span>
           </h1>
 
           {/* Subheading */}
           <p
-            className="max-w-lg text-base leading-relaxed text-neutral-400 sm:text-lg animate-fadeInWord"
-            style={{ animationDelay: `${headline.length * 0.07 + 0.1}s`, opacity: 0 }}
+            className="max-w-xl text-base leading-relaxed text-neutral-400 sm:text-lg animate-fadeInWord"
+            style={{ animationDelay: `${0.15 + totalWords * 0.08 + 0.1}s`, opacity: 0 }}
           >
             We help businesses automate, scale and grow using AI. From
             custom-built apps and websites to full AI systems.
           </p>
 
-          {/* CTA button — outlined */}
-          <a
-            href="#contact"
-            className="animate-fadeInWord mt-2 inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
-            style={{ animationDelay: `${headline.length * 0.07 + 0.3}s`, opacity: 0 }}
+          {/* CTAs */}
+          <div
+            className="animate-fadeInWord mt-2 flex flex-col items-center gap-4 sm:flex-row"
+            style={{ animationDelay: `${0.15 + totalWords * 0.08 + 0.25}s`, opacity: 0 }}
           >
-            Get In Touch <span>→</span>
-          </a>
+            <a
+              href="#contact"
+              className="btn-primary inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-transform duration-300 hover:scale-[1.04]"
+            >
+              Get In Touch <span>→</span>
+            </a>
+            <a
+              href="#services"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+            >
+              Explore Services
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll hint */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <div
+            className="animate-scrollHint flex h-9 w-5 items-start justify-center rounded-full pt-1.5"
+            style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+          >
+            <span className="block h-1.5 w-px bg-white/50" />
+          </div>
         </div>
       </main>
 
