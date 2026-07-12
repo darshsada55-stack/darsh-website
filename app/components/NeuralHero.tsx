@@ -20,6 +20,7 @@ export default function NeuralHero() {
 
     let raf: number;
     let nodes: Node[] = [];
+    let lastWidth = 0;
     const mouse = { x: -9999, y: -9999 };
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -27,12 +28,19 @@ export default function NeuralHero() {
       if (!canvas) return;
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
+
+      // Mobile browsers fire resize while scrolling (URL bar collapse) —
+      // only rebuild the nodes when the width actually changes.
+      if (canvas.offsetWidth === lastWidth && nodes.length > 0) return;
+      lastWidth = canvas.offsetWidth;
+
+      const speed = canvas.offsetWidth < 768 ? 0.14 : 0.35;
       const count = Math.min(90, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / 16000));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * canvas.offsetWidth,
         y: Math.random() * canvas.offsetHeight,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
+        vx: (Math.random() - 0.5) * speed,
+        vy: (Math.random() - 0.5) * speed,
       }));
     }
 
