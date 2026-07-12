@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  viewportFit: "cover",
-  // Paints the phone's status-bar / browser chrome strip in the site's
-  // dark colour so nothing shows through it while scrolling.
+  // No viewport-fit=cover: the page must NOT render under the iOS status
+  // bar, so Safari paints that strip solid with the page background —
+  // content can never show through it while scrolling.
   themeColor: "#0a0a0a",
 };
 

@@ -39,9 +39,7 @@ export default function Navbar() {
         ref={navRef}
         className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-300"
         style={{
-          paddingTop: "max(1rem, env(safe-area-inset-top))",
-          // Fully opaque so no scrolling content ever bleeds through the bar
-          // (the notch/safe-area region is painted solid too).
+          // Fully opaque so no scrolling content ever bleeds through the bar.
           backgroundColor: "#0a0a0a",
           borderBottom: scrolled || open ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
           transform: "translateZ(0)",
