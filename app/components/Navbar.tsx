@@ -16,8 +16,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Publish the real navbar height as --nav-h so the spacer, mobile menu
-  // and hero all track it exactly on every screen size.
+  // Publish the real navbar height as --nav-h so the mobile menu and hero
+  // track it exactly on every screen size.
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
@@ -37,13 +37,12 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
-        className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-300"
+        className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-300"
         style={{
-          // Fully opaque so no scrolling content ever bleeds through the bar.
+          // Solid, in-flow (sticky) bar. No fixed-layer drift on iOS, and
+          // nothing can ever render above or behind it.
           backgroundColor: "#0a0a0a",
           borderBottom: scrolled || open ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
-          transform: "translateZ(0)",
-          isolation: "isolate",
         }}
       >
         <a href="#" className="text-lg font-bold tracking-[0.25em] text-white md:text-xl">
@@ -93,17 +92,13 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Spacer that always matches the real nav height */}
-      <div style={{ height: "var(--nav-h, 64px)" }} aria-hidden />
-
       {/* Mobile menu */}
       {open && (
         <div
           className="fixed inset-0 z-40 flex flex-col md:hidden"
           style={{
             top: "var(--nav-h, 64px)",
-            backgroundColor: "rgba(10,10,10,0.97)",
-            backdropFilter: "blur(16px)",
+            backgroundColor: "#0a0a0a",
           }}
         >
           {links.map((label, i) => (
