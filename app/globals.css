@@ -5,6 +5,7 @@
   --foreground: #ededed;
   --hairline: rgba(255, 255, 255, 0.07);
   --panel: #0d0d0d;
+  --nav-h: 64px; /* fallback; Navbar measures and overrides at runtime */
 }
 
 @theme inline {

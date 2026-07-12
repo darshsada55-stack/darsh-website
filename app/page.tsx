@@ -18,8 +18,11 @@ export default function Home() {
   return (
     <>
       <main
-        className="relative flex min-h-[calc(100vh-65px)] flex-col justify-center overflow-hidden px-6 md:px-16"
-        style={{ background: "radial-gradient(ellipse at 30% 50%, #0d1a2d 0%, #0a0a0a 65%)" }}
+        className="relative flex flex-col justify-center overflow-hidden px-6 md:px-16"
+        style={{
+          minHeight: "calc(100svh - var(--nav-h, 64px))",
+          background: "radial-gradient(ellipse at 30% 50%, #0d1a2d 0%, #0a0a0a 65%)",
+        }}
       >
         <NeuralHero />
 

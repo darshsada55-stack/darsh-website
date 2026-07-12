@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = ["Work", "Services", "Contact"];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -15,11 +16,30 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Publish the real navbar height as --nav-h so the spacer, mobile menu
+  // and hero all track it exactly on every screen size.
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const update = () =>
+      document.documentElement.style.setProperty("--nav-h", `${nav.offsetHeight}px`);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(nav);
+    window.addEventListener("orientationchange", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("orientationchange", update);
+    };
+  }, []);
+
   return (
     <>
       <nav
+        ref={navRef}
         className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-300"
         style={{
+          paddingTop: "max(1rem, env(safe-area-inset-top))",
           backgroundColor: "rgba(10,10,10,0.86)",
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
@@ -75,14 +95,18 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Spacer to offset the fixed nav */}
-      <div className="h-[57px] md:h-[76px]" aria-hidden />
+      {/* Spacer that always matches the real nav height */}
+      <div style={{ height: "var(--nav-h, 64px)" }} aria-hidden />
 
       {/* Mobile menu */}
       {open && (
         <div
-          className="fixed inset-0 top-[57px] z-40 flex flex-col md:hidden"
-          style={{ backgroundColor: "rgba(10,10,10,0.97)", backdropFilter: "blur(16px)" }}
+          className="fixed inset-0 z-40 flex flex-col md:hidden"
+          style={{
+            top: "var(--nav-h, 64px)",
+            backgroundColor: "rgba(10,10,10,0.97)",
+            backdropFilter: "blur(16px)",
+          }}
         >
           {links.map((label, i) => (
             <a
