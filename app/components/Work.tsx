@@ -175,30 +175,17 @@ export default function Work() {
           </p>
         </Reveal>
 
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {projects.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.12}>
-              <TiltCard className="rounded-2xl p-5 md:p-6">
-                <p.Mock />
-                <div className="mt-6 px-1 pb-2">
-=======
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:items-stretch">
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.12} className="h-full">
               <TiltCard className="flex h-full flex-col rounded-2xl p-5 md:p-6">
                 <p.Mock />
                 <div className="mt-6 flex flex-1 flex-col px-1 pb-2">
->>>>>>> 82d537db58228cf50c17d516358605bea51f75f9
                   <p className="mb-2 text-[10px] font-semibold tracking-[0.25em] text-neutral-600 uppercase">
                     {p.tag}
                   </p>
                   <h3 className="mb-2 text-lg font-bold text-white">{p.title}</h3>
-<<<<<<< HEAD
-                  <p className="text-sm leading-relaxed text-neutral-500">{p.desc}</p>
-=======
                   <p className="mt-auto text-sm leading-relaxed text-neutral-500">{p.desc}</p>
->>>>>>> 82d537db58228cf50c17d516358605bea51f75f9
                 </div>
               </TiltCard>
             </Reveal>
