@@ -17,10 +17,14 @@
 
 html {
   background: var(--background);
+  /* Stop iOS elastic overscroll — the bounce at the top edge is a common
+     trigger for Safari briefly mis-painting fixed/sticky elements. */
+  overscroll-behavior-y: none;
 }
 
 body {
   background: var(--background);
+  overscroll-behavior-y: none;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
