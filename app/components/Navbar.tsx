@@ -18,12 +18,14 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-all duration-300"
+        className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-300"
         style={{
-          backgroundColor: scrolled || open ? "rgba(10,10,10,0.72)" : "rgba(10,10,10,0)",
-          backdropFilter: scrolled || open ? "blur(16px)" : "none",
-          WebkitBackdropFilter: scrolled || open ? "blur(16px)" : "none",
+          backgroundColor: "rgba(10,10,10,0.86)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           borderBottom: scrolled || open ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
+          transform: "translateZ(0)",
+          isolation: "isolate",
         }}
       >
         <a href="#" className="text-lg font-bold tracking-[0.25em] text-white md:text-xl">
@@ -72,6 +74,9 @@ export default function Navbar() {
           />
         </button>
       </nav>
+
+      {/* Spacer to offset the fixed nav */}
+      <div className="h-[57px] md:h-[76px]" aria-hidden />
 
       {/* Mobile menu */}
       {open && (
