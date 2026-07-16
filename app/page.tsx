@@ -26,12 +26,12 @@ export default function Home() {
       >
         <NeuralHero />
 
-        {/* Soft glow orb */}
+        {/* Soft glow orb — filter blur is desktop-only (creates a GPU layer
+            that iOS Safari mispaints under the fixed header during scroll) */}
         <div
-          className="pointer-events-none absolute left-[20%] top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          className="hero-orb pointer-events-none absolute left-[20%] top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{
             background: "radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, transparent 65%)",
-            filter: "blur(40px)",
           }}
         />
 

@@ -13,6 +13,11 @@ export default function NeuralHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // On phones the animated canvas creates a GPU compositing layer that
+    // iOS Safari paints over the fixed header during momentum scroll. Skip
+    // it entirely on mobile — the dot animation is a desktop-only touch.
+    if (!window.matchMedia("(min-width: 768px)").matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -137,7 +142,7 @@ export default function NeuralHero() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
     />
   );
 }

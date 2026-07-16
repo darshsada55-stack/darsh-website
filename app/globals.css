@@ -119,6 +119,13 @@ body::after {
   animation: scrollHint 2s ease-in-out infinite;
 }
 
+/* ——— Hero glow orb: blur only on desktop ——— */
+@media (min-width: 768px) {
+  .hero-orb {
+    filter: blur(40px);
+  }
+}
+
 /* ——— Premium card ——— */
 .card-premium {
   position: relative;
