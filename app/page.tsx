@@ -18,9 +18,8 @@ export default function Home() {
   return (
     <>
       <main
-        className="relative flex flex-col justify-center overflow-hidden px-6 md:px-16"
+        className="relative flex min-h-[calc(100svh-4rem)] flex-col justify-center overflow-hidden px-6 md:min-h-[calc(100svh-5rem)] md:px-16"
         style={{
-          minHeight: "calc(100svh - var(--nav-h, 64px))",
           background: "radial-gradient(ellipse at 30% 50%, #0d1a2d 0%, #0a0a0a 65%)",
         }}
       >
