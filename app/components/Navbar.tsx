@@ -37,12 +37,19 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
-        className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-300"
+        className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-300"
         style={{
-          // Solid, in-flow (sticky) bar. No fixed-layer drift on iOS, and
-          // nothing can ever render above or behind it.
           backgroundColor: "#0a0a0a",
           borderBottom: scrolled || open ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
+          // ROOT-CAUSE FIX (iOS Safari): the animated <canvas> and blur in the
+          // hero sit on their own GPU layer. During momentum scroll iOS can
+          // paint that layer OVER an unpromoted header. Forcing the header onto
+          // its own promoted compositing layer keeps it ordered on top.
+          transform: "translateZ(0)",
+          WebkitTransform: "translateZ(0)",
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
         }}
       >
         <a href="#" className="text-lg font-bold tracking-[0.25em] text-white md:text-xl">
@@ -91,6 +98,9 @@ export default function Navbar() {
           />
         </button>
       </nav>
+
+      {/* Spacer that offsets the fixed nav so hero content starts below it */}
+      <div style={{ height: "var(--nav-h, 64px)" }} aria-hidden />
 
       {/* Mobile menu */}
       {open && (
