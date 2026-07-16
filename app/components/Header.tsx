@@ -44,6 +44,9 @@ export default function Header() {
           // positioning stays anchored to the viewport on iOS Safari.
           isolation: "isolate",
           backgroundColor: "#0a0a0a",
+          // Solid background fills the status-bar strip; the inset padding
+          // drops the bar's contents just below the notch — flush, no gap.
+          paddingTop: "env(safe-area-inset-top)",
         }}
       >
         <nav
@@ -119,8 +122,11 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* Spacer keeps content below the fixed header — no layout shift */}
-      <div className="h-16 md:h-20" aria-hidden />
+      {/* Spacer keeps content below the fixed header (incl. safe-area) — no layout shift */}
+      <div
+        aria-hidden
+        className="h-[calc(env(safe-area-inset-top)+4rem)] md:h-[calc(env(safe-area-inset-top)+5rem)]"
+      />
 
       {/* Full-screen mobile menu */}
       <div
@@ -135,8 +141,8 @@ export default function Header() {
           transition: "opacity 0.35s ease, visibility 0.35s ease",
         }}
       >
-        {/* Offset so links sit below the header bar */}
-        <div className="h-16" aria-hidden />
+        {/* Offset so links sit below the header bar (incl. safe-area) */}
+        <div className="h-[calc(env(safe-area-inset-top)+4rem)]" aria-hidden />
         <nav aria-label="Mobile" className="flex flex-col px-6 pt-6">
           {LINKS.map((l, i) => (
             <a

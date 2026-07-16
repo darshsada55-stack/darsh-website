@@ -29,9 +29,11 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  // No viewport-fit=cover: the page must NOT render under the iOS status
-  // bar, so Safari paints that strip solid with the page background —
-  // content can never show through it while scrolling.
+  // Extend the layout edge-to-edge so the fixed header's own solid
+  // background fills the status-bar strip. The header pads its content
+  // down with env(safe-area-inset-top) so the logo sits right beneath
+  // the status bar with no gap.
+  viewportFit: "cover",
   themeColor: "#0a0a0a",
 };
 
